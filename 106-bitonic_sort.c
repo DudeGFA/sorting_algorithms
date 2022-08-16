@@ -50,7 +50,8 @@ void bitonic_merge(int *array, size_t size, size_t initial, size_t seq,
  * @seq: The size of a block of the building bitonic sequence.
  * @direction: The direction to sort the bitonic sequence block in.
  */
-void bitonic_seq(int *array, size_t size, size_t initial, size_t seq, char direction)
+void bitonic_seq(int *array, size_t size, size_t initial, size_t seq,
+		char direction)
 {
 	size_t child_seq = seq / 2;
 	char *str = (direction == UP) ? "UP" : "DOWN";
