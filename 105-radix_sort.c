@@ -35,6 +35,10 @@ void countsort(int *array, int n, int place_val)
     int i;
     int count[10] = {0};
 
+    if (output == NULL)
+    {
+        exit (98);
+    }
     for (i = 0; i < n; i++)
         count[(array[i] / place_val) % 10]++;
     for (i = 1; i < 10; i++)
@@ -48,6 +52,7 @@ void countsort(int *array, int n, int place_val)
     {
         array[i] = output[i];
     }
+    free (output);
     print_array(array, n);
 }
 /**
