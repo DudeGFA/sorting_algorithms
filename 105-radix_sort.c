@@ -2,7 +2,7 @@
 
 /**
  * return_max - returns max value in an array
- * 
+ *
  * @arr: array
  * @n: size of array
  * Return: int
@@ -17,7 +17,7 @@ int return_max(int arr[], int n)
 		if (arr[i] > max_val)
 			max_val = arr[i];
 	}
-	return max_val;
+	return (max_val);
 }
 
 /**
@@ -73,5 +73,5 @@ void radix_sort(int *array, size_t size)
 		countsort(array, size, place_val, output);
 		print_array(array, size);
 	}
-	free (output);
+	free(output);
 }
