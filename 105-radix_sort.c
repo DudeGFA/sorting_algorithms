@@ -37,7 +37,7 @@ void countsort(int *array, int n, int place_val)
 
     if (output == NULL)
     {
-        exit (98);
+        return;
     }
     for (i = 0; i < n; i++)
         count[(array[i] / place_val) % 10]++;
@@ -68,6 +68,8 @@ void radix_sort(int *array, size_t size)
     int max_val = return_max(array, size);
     int place_val;
 
+    if (array == NULL || size <= 1)
+        return;
     for (place_val = 1; max_val / place_val > 0; place_val *= 10)
         countsort(array, size, place_val);
 }
