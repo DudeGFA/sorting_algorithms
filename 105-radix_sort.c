@@ -29,16 +29,11 @@ int return_max(int arr[], int n)
  * @place_val: place value sorting depends on
  * Returns: nothing
  */
-void countsort(int *array, int n, int place_val)
+void countsort(int *array, int n, int place_val, int *output)
 {
-    int *output = malloc(sizeof(int) * n);
     int i;
     int count[10] = {0};
 
-    if (output == NULL)
-    {
-        exit (98);
-    }
     for (i = 0; i < n; i++)
         count[(array[i] / place_val) % 10]++;
     for (i = 1; i < 10; i++)
@@ -52,7 +47,6 @@ void countsort(int *array, int n, int place_val)
     {
         array[i] = output[i];
     }
-    free (output);
 }
 /**
  * radix_sort - sorts an array using radix
@@ -64,14 +58,20 @@ void countsort(int *array, int n, int place_val)
  */
 void radix_sort(int *array, size_t size)
 {
-    int max_val = return_max(array, size);
-    int place_val;
+    int max_val, place_val, *output;
 
     if (array == NULL || size <= 1)
         return;
+    output = malloc(sizeof(int) * size);
+    if (output == NULL)
+    {
+        return;
+    }
+    max_val = return_max(array, size);
     for (place_val = 1; max_val / place_val > 0; place_val *= 10)
     {
-        countsort(array, size, place_val);
+        countsort(array, size, place_val, output);
         print_array(array, size);
     }
+    free (output);
 }
